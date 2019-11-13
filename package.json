@@ -1,0 +1,87 @@
+{
+  "_moduleAliases": {
+    "~component": "src/components",
+    "~root": ".",
+    "~util": "src/utils"
+  },
+  "author": {
+    "email": "paul+lefty@webb.page",
+    "name": "Paul Anthony Webb"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "marked": "^0.7.0",
+    "natural-orderby": "^2.0.3",
+    "polka": "next",
+    "sirv": "^0.4.2"
+  },
+  "description": "Homepage for lefty.world",
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/runtime": "^7.7.2",
+    "@inc/eslint-config": "^2019.10.22",
+    "@inc/sasslint-config": "^2019.7.23",
+    "@inc/uchu": "^2019.9.1-1.2",
+    "chronver": "^2019.10.2-7.1",
+    "cypress": "^3.6.1",
+    "eslint": "^6.6.0",
+    "husky": "^3.0.9",
+    "link-module-alias": "^1.2.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.26.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-svelte": "^5.1.1",
+    "rollup-plugin-terser": "^5.1.2",
+    "sapper": "^0.27.9",
+    "sass": "^1.23.3",
+    "sass-lint": "^1.13.1",
+    "snazzy": "^8.0.0",
+    "standardx": "^5.0.0",
+    "svelte": "^3.13.0",
+    "svelte-preprocess": "^3.2.6",
+    "updates": "^9.0.1"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format && npm run test:sass && npm run increment && git add -A :/"
+    }
+  },
+  "name": "lefty-web-app",
+  "private": true,
+  "scripts": {
+    "build": "sapper build --legacy",
+    "compress": "sass --load-path=node_modules --update sass:static --style compressed",
+    "cy": "run-p --race dev cy:run",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "export": "sapper export --legacy",
+    "format": "eslint . --fix",
+    "increment": "chronver --increment package",
+    "postinstall": "link-module-alias",
+    "preinstall": "command -v link-module-alias;link-module-alias clean || true",
+    "start": "rm -rf __sapper__;npm i;npm run build;npm run compress;NODE_ENV=production PORT=4444 node __sapper__/build",
+    "test": "run-s test:*",
+    "test:dependencies": "updates --update ./",
+    "test:lint": "standardx --verbose | snazzy",
+    "test:sass": "sass-lint --config ./node_modules/@inc/sasslint-config/config.json --verbose",
+    "watch": "NODE_ENV=development PORT=4444 run-p watch:*",
+    "watch:app": "sapper dev",
+    "watch:sass": "sass --load-path=node_modules --watch sass:static --style compressed"
+  },
+  "standardx": {
+    "ignore": [
+      "__sapper__",
+      "static"
+    ]
+  },
+  "version": "2019.11.12"
+}
