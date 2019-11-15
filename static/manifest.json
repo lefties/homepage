@@ -13,8 +13,8 @@
       "type": "image/png"
     }
   ],
-  "name": "sapper-starter",
-  "short_name": "sapper-starter",
+  "name": "Lefty World",
+  "short_name": "Lefty World",
   "start_url": "/",
   "theme_color": "#333"
 }
