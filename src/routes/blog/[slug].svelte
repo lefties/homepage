@@ -16,6 +16,7 @@
   import { ownership, replaceDashesWithDots } from "~util";
 
   export let post;
+  const postSnippet = post.raw.slice(0, 150) + "…";
 </script>
 
 <style type="text/scss">
@@ -87,6 +88,10 @@
 
 <svelte:head>
   <title>{post.metadata.title} &middot; Lefty World</title>
+  <meta name="description" content={postSnippet}/>
+  <meta property="og:description" content={postSnippet}/>
+  <meta property="og:image" content="/og.png"/>
+  <meta property="og:title" content="{post.metadata.title} &middot; Blog &middot; Lefty World"/>
 </svelte:head>
 
 <header class="header">

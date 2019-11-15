@@ -41,6 +41,27 @@
     transform: translateZ(0);
     white-space: nowrap;
     width: 100%;
+
+    &::before,
+    &::after {
+      width: 1rem; height: 100%;
+
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      z-index: 1;
+    }
+
+    &::before {
+      box-shadow: 0.25rem 0 1.25rem 0.25rem $inc-black;
+      left: -1rem;
+    }
+
+    &::after {
+      box-shadow: -0.25rem 0 1.25rem 0.25rem $inc-black;
+      right: -1rem;
+    }
   }
 
   .marquee__item {

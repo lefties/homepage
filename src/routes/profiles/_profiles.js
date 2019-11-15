@@ -20,29 +20,29 @@ import { processMarkdown } from "~util";
 
 //  E X P O R T S
 
-export function getPosts() {
-  const slugs = fs.readdirSync("posts")
+export function getProfiles() {
+  const slugs = fs.readdirSync("profiles")
     .filter(file => path.extname(file) === ".md")
     .map(file => file.slice(0, -3));
 
   const sortedPosts = orderBy(
-    slugs.map(getPost),
-    [v => v.metadata.date],
+    slugs.map(getProfile),
+    [v => v.metadata.name],
     ["desc"]
   );
 
   return sortedPosts;
 }
 
-export function getPost(slug) {
-  const file = `posts/${slug}.md`;
+export function getProfile(slug) {
+  const file = `profiles/${slug}.md`;
   const regexForRemoteLinks = /(https?:\/\/.*?)(\S+)|\((https?:\/\/.*?)\)/g;
 
   if (!fs.existsSync(file))
     return null;
 
   const markdown = fs.readFileSync(file, "utf-8");
-  const { content, metadata, raw } = processMarkdown(markdown);
+  const { content, metadata } = processMarkdown(markdown);
   const html = marked(content);
   const linkMatches = html.match(regexForRemoteLinks);
   let updatedHtml = html;
@@ -59,7 +59,6 @@ export function getPost(slug) {
   return {
     html: updatedHtml,
     metadata,
-    raw,
     slug
   };
 }

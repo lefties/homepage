@@ -9,38 +9,83 @@
 
   @include font-face(600, "../type/sans", "Lefty Sans");
   @include font-face(400, "../type/sans", "Lefty Sans");
-  @include font-face(300, "../type/sans", "Lefty Sans");
+
+  :global(html) {
+    background-color: $inc-gray-1;
+  }
 
   :global(app) {
     @include font-sans("Lefty Sans");
-    background-color: $inc-gray-1;
     color: $inc-gray-8;
     min-height: 100vh;
     display: flex;
   }
 
+  :global(code) {
+    @include font-mono("SF Mono");
+    font-weight: 600;
+  }
+
   main {
+    position: relative;
     width: 100%;
+
+    @media (min-width: 601px) {
+      &::after {
+        width: 1px; height: 100%;
+        top: 0; left: 149px;
+
+        background-color: $inc-gray-3;
+        content: "";
+        position: fixed;
+      }
+    }
   }
 
   :global(.header) {
-    align-items: end;
+    align-items: flex-end;
     background-color: $inc-gray-1;
     border-bottom: 1px solid $inc-gray-3;
     display: flex;
     font-weight: 400;
-    height: 6.5rem;
     padding: 1rem 1.5rem;
     position: sticky;
     top: 0;
     z-index: 1;
 
+    @media (min-width: 601px) {
+      height: 6.5rem;
+    }
+
+    @media (max-width: 600px) {
+      height: 8rem;
+    }
+
     h1 {
       font-size: 1.5rem;
       font-style: italic;
+      line-height: 1;
+      // overflow: hidden;
+
+      // UGH
+      // display: -webkit-box;
+      // -webkit-box-orient: vertical;
+      // -webkit-line-clamp: 2;
+    }
+  }
+
+  :global(section) {
+    @media (max-width: 600px) {
+      &:last-of-type {
+        margin-bottom: 4rem;
+      }
     }
   }
 </style>
+
+<svelte:head>
+  <meta property="og:site_name" content="Lefty World"/>
+</svelte:head>
 
 <Navigation {segment}/>
 

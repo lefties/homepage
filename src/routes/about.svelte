@@ -48,6 +48,10 @@
 
 <svelte:head>
 	<title>About &middot; Lefty World</title>
+  <meta name="description" content="lefty.world is built with Svelte, a blazing fast JavaScript framework. Also, a bunch of other cool things. Check it out!"/>
+  <meta property="og:description" content="lefty.world is built with Svelte, a blazing fast JavaScript framework. Also, a bunch of other cool things. Check it out!"/>
+  <meta property="og:image" content="/og.png"/>
+  <meta property="og:title" content="About &middot; Lefty World"/>
 </svelte:head>
 
 <header class="header">

@@ -37,7 +37,11 @@
 </style>
 
 <svelte:head>
-  <title>Lefty.World</title>
+  <title>Lefty World</title>
+  <meta name="description" content="Lefty World is a refuge against the tyranny of righteousness!"/>
+  <meta property="og:description" content="Lefty World is a refuge against the tyranny of righteousness!"/>
+  <meta property="og:image" content="/og.png"/>
+  <meta property="og:title" content="Lefty World"/>
 </svelte:head>
 
 <header class="header">

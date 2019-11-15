@@ -19,10 +19,6 @@
       &:first-child {
         font-weight: 600;
       }
-
-      &:last-child {
-        // opacity: 0.8;
-      }
     }
 
     a {
@@ -43,6 +39,10 @@
 
 <svelte:head>
 	<title>FAQ &middot; Lefty World</title>
+  <meta name="description" content="Frequently Asked Questions about Lefty World and lefties, in general."/>
+  <meta property="og:description" content="Frequently Asked Questions about Lefty World and lefties, in general."/>
+  <meta property="og:image" content="/og.png"/>
+  <meta property="og:title" content="FAQ &middot; Lefty World"/>
 </svelte:head>
 
 <header class="header">

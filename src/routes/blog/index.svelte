@@ -67,6 +67,10 @@
     line-height: 1.55;
 
     li {
+      &:first-of-type {
+        font-weight: normal;
+      }
+
       &:not(:last-of-type) {
         margin-bottom: 1rem;
       }
@@ -95,6 +99,10 @@
 
 <svelte:head>
   <title>Blog &middot; Lefty World</title>
+  <meta name="description" content="Recent updates and ramblings from Lefty World"/>
+  <meta property="og:description" content="Recent updates and ramblings from Lefty World"/>
+  <meta property="og:image" content="/og.png"/>
+  <meta property="og:title" content="Blog &middot; Lefty World"/>
 </svelte:head>
 
 <header class="header">
