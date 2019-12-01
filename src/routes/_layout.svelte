@@ -14,7 +14,7 @@
     background-color: $inc-gray-1;
   }
 
-  :global(app) {
+  :global(x-app) {
     @include font-sans("Lefty Sans");
     color: $inc-gray-8;
     min-height: 100vh;
